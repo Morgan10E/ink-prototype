@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://g8cq80xb0gml"]
+
+[ext_resource type="Script" uid="uid://wiy282npd80s" path="res://scenes/ink_story_gd.gd" id="1_f6q3n"]
+[ext_resource type="Resource" uid="uid://crtqfpcs3wxsv" path="res://ink_files/test.ink" id="2_ovkqb"]
+[ext_resource type="PackedScene" uid="uid://deucoebf8ly6u" path="res://scenes/timer_bar.tscn" id="3_ovkqb"]
+
+[node name="Convo" type="Control" unique_id=402203327 node_paths=PackedStringArray("text_label", "choice_container", "timer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f6q3n")
+story = ExtResource("2_ovkqb")
+text_label = NodePath("RichTextLabel")
+choice_container = NodePath("VBoxContainer")
+timer = NodePath("TimerBar")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1355751118]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -95.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=976966911]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -324.0
+grow_horizontal = 2
+
+[node name="TimerBar" parent="." unique_id=1706790987 instance=ExtResource("3_ovkqb")]
+visible = false
+layout_mode = 1
+offset_top = 0.0
