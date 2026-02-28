@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://crnv7o8iswmvy"]
+
+[ext_resource type="Script" uid="uid://cjkahwjqg2fk" path="res://scenes/grid_mover.gd" id="1_roead"]
+[ext_resource type="Script" uid="uid://cv6m3cyml2aaj" path="res://scenes/wasd_controller.gd" id="2_o8xeu"]
+
+[node name="GridMovement" type="Node2D" unique_id=1780054907]
+
+[node name="Player" type="Node2D" parent="." unique_id=2133649852]
+
+[node name="GridMover" type="Node2D" parent="Player" unique_id=988256464 node_paths=PackedStringArray("move_object")]
+script = ExtResource("1_roead")
+move_object = NodePath("..")
+
+[node name="ColorRect" type="ColorRect" parent="Player" unique_id=1037289670]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 1, 1, 1)
+
+[node name="WasdController" type="Node" parent="Player" unique_id=710246156]
+script = ExtResource("2_o8xeu")
+
+[connection signal="direction_pressed" from="Player/WasdController" to="Player/GridMover" method="move"]
