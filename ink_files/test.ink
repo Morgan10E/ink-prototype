@@ -19,5 +19,7 @@ Once upon a time... #timed_choice
  -> end
 
 === end ===
-- They lived happily ever after.
+They lived happily ever after.
+And we're testing to see.
+If we multi-line.
     -> END
