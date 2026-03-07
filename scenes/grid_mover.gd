@@ -14,9 +14,15 @@ func move(direction: Vector2):
     if not is_moving() and direction.length() > 0:
         facing_direction = normalize_direction(direction)
         
-        var colliding_with = movement_blocked()
+        update_raycast()
+        var colliding_with = raycast.get_collider()
         if colliding_with != null:
-            print(colliding_with)
+            if colliding_with is TileMapLayer:
+                var cell = colliding_with.local_to_map(raycast.get_collision_point())
+                var tile_data: TileData = colliding_with.get_cell_tile_data(cell)
+                if tile_data:
+                    var value = tile_data.get_custom_data("ink_entrypoint")
+                    print(value)
             return
         
         moving_direction = facing_direction
@@ -27,10 +33,9 @@ func move(direction: Vector2):
         tween.tween_property(move_object, "position", new_position, speed).set_trans(Tween.TRANS_LINEAR)
         tween.tween_callback(func(): moving_direction = Vector2.ZERO)
 
-func movement_blocked():
+func update_raycast():
     raycast.target_position = facing_direction * TILE_SIZE
     raycast.force_raycast_update()
-    return raycast.get_collider()
 
 func is_moving() -> bool:
     return moving_direction.length() > 0

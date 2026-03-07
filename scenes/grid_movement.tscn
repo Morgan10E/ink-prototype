@@ -81,6 +81,7 @@ texture = ExtResource("3_pglcg")
 1:0/0 = 0
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0/custom_data_0 = "wall"
 3:0/0 = 0
 4:0/0 = 0
 5:0/0 = 0
@@ -137,9 +138,11 @@ texture = ExtResource("3_pglcg")
 0:7/0 = 0
 1:7/0 = 0
 1:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:7/0/custom_data_0 = "skull"
 2:7/0 = 0
 3:7/0 = 0
 3:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:7/0/custom_data_0 = "suspicious_box"
 4:7/0 = 0
 5:7/0 = 0
 6:7/0 = 0
@@ -147,6 +150,8 @@ texture = ExtResource("3_pglcg")
 
 [sub_resource type="TileSet" id="TileSet_3l73t"]
 physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "ink_entrypoint"
+custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_r23i4")
 
 [node name="GridMovement" type="Node2D" unique_id=1780054907]
