@@ -1,6 +1,7 @@
 extends Node
 
 signal direction_pressed(direction: Vector2)
+signal interact_triggered
 
 func _process(delta: float) -> void:
     # TODO: controls should get further abstracted out
@@ -20,3 +21,7 @@ func _process(delta: float) -> void:
     var direction = Vector2(x, y)
     if direction.length() > 0:
         emit_signal("direction_pressed", direction)
+    else:
+        # actions the user can take while standing still
+        if Input.is_action_just_pressed("ui_select"):
+            emit_signal("interact_triggered")

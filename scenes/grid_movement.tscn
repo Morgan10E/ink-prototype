@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cjkahwjqg2fk" path="res://scenes/grid_mover.gd" id="1_roead"]
 [ext_resource type="Script" uid="uid://cv6m3cyml2aaj" path="res://scenes/wasd_controller.gd" id="2_o8xeu"]
 [ext_resource type="Texture2D" uid="uid://ipglycufn0bm" path="res://assets/tileset_1bit.png" id="3_pglcg"]
+[ext_resource type="Script" uid="uid://j0bpv42wey1r" path="res://scenes/story_connector.gd" id="5_r23i4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vhv6r"]
 resource_name = "demo_tiles"
@@ -198,4 +199,9 @@ script = ExtResource("2_o8xeu")
 target_position = Vector2(0, 16)
 collide_with_areas = true
 
+[node name="StoryConnector" type="Node" parent="Player" unique_id=250131033]
+script = ExtResource("5_r23i4")
+
+[connection signal="facing_ink_entrypoint" from="Player/GridMover" to="Player/StoryConnector" method="update_ink_entrypoint"]
 [connection signal="direction_pressed" from="Player/WasdController" to="Player/GridMover" method="move"]
+[connection signal="interact_triggered" from="Player/WasdController" to="Player/StoryConnector" method="trigger_story"]

@@ -15,6 +15,10 @@ run/main_scene="uid://g8cq80xb0gml"
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Constants="*uid://dys6ixqrxnqbv"
+
 [dotnet]
 
 project/assembly_name="InkPrototype"
