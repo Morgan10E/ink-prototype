@@ -171,7 +171,7 @@ tile_map_data = PackedByteArray("AAAGAAAAAAABAAcAAAAGAAMAAAADAAcAAAAAAAMAAAACAAA
 tile_set = SubResource("TileSet_3l73t")
 
 [node name="Player" type="Node2D" parent="." unique_id=2133649852]
-position = Vector2(8, 8)
+position = Vector2(-8, -8)
 
 [node name="GridMover" type="Node2D" parent="Player" unique_id=988256464 node_paths=PackedStringArray("move_object", "raycast")]
 script = ExtResource("1_roead")
@@ -201,6 +201,9 @@ collide_with_areas = true
 
 [node name="StoryConnector" type="Node" parent="Player" unique_id=250131033]
 script = ExtResource("5_r23i4")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1499029524]
+zoom = Vector2(5, 5)
 
 [connection signal="facing_ink_entrypoint" from="Player/GridMover" to="Player/StoryConnector" method="update_ink_entrypoint"]
 [connection signal="direction_pressed" from="Player/WasdController" to="Player/GridMover" method="move"]
