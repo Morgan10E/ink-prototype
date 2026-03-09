@@ -204,6 +204,10 @@ script = ExtResource("5_r23i4")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1499029524]
 zoom = Vector2(5, 5)
+limit_left = -32
+limit_top = -32
+limit_right = 320
+limit_bottom = 320
 
 [connection signal="facing_ink_entrypoint" from="Player/GridMover" to="Player/StoryConnector" method="update_ink_entrypoint"]
 [connection signal="direction_pressed" from="Player/WasdController" to="Player/GridMover" method="move"]
