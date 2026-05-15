@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://clm0e8ao1cscg"]
+[gd_scene format=3 uid="uid://bwlfohfmftfva"]
 
 [ext_resource type="Script" uid="uid://wiy282npd80s" path="res://scenes/ink_story_gd.gd" id="1_bl13t"]
 [ext_resource type="Resource" uid="uid://crtqfpcs3wxsv" path="res://ink_files/test.ink" id="2_bl13t"]

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://65fmk5fpaqoo"]
+
+[ext_resource type="Script" uid="uid://dgk5op03npcmw" path="res://scenes/story_manager.gd" id="1_w2twt"]
+[ext_resource type="PackedScene" uid="uid://g8cq80xb0gml" path="res://scenes/convo.tscn" id="2_7ykc4"]
+[ext_resource type="PackedScene" uid="uid://dffp3g71pjan5" path="res://scenes/level.tscn" id="3_pu3yx"]
+[ext_resource type="PackedScene" uid="uid://cen43hun4im0k" path="res://scenes/player.tscn" id="4_gubc5"]
+
+[node name="MainScene" type="Node" unique_id=1496507385]
+
+[node name="StoryManager" type="CanvasLayer" parent="." unique_id=1233819320]
+visible = false
+script = ExtResource("1_w2twt")
+
+[node name="Convo" parent="StoryManager" unique_id=402203327 instance=ExtResource("2_7ykc4")]
+visible = false
+
+[node name="WorldManager" type="Node" parent="." unique_id=1741334545]
+
+[node name="Level" parent="WorldManager" unique_id=1546749756 instance=ExtResource("3_pu3yx")]
+
+[node name="Player" parent="WorldManager" unique_id=513678675 instance=ExtResource("4_gubc5")]

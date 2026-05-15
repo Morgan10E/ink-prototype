@@ -1,0 +1,166 @@
+[gd_scene format=4 uid="uid://dffp3g71pjan5"]
+
+[ext_resource type="Texture2D" uid="uid://ipglycufn0bm" path="res://assets/tileset_1bit.png" id="1_2q6dc"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vhv6r"]
+resource_name = "demo_tiles"
+texture = ExtResource("1_2q6dc")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_r23i4"]
+sources/0 = SubResource("TileSetAtlasSource_vhv6r")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r23i4"]
+texture = ExtResource("1_2q6dc")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0/custom_data_0 = "wall"
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+1:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:7/0/custom_data_0 = "skull"
+2:7/0 = 0
+3:7/0 = 0
+3:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:7/0/custom_data_0 = "suspicious_box"
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_3l73t"]
+physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "ink_entrypoint"
+custom_data_layer_0/type = 4
+sources/0 = SubResource("TileSetAtlasSource_r23i4")
+
+[node name="Level" type="Node2D" unique_id=1546749756]
+
+[node name="GroundLayer" type="TileMapLayer" parent="." unique_id=1489105689]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAABAAAAAAAGAAAAAAACAAAAAAAGAAAAAAADAAAAAAAGAAAAAAAEAAAAAAAGAAAAAAAEAAEAAAAGAAAAAAAFAAEAAAAGAAAAAAAGAAEAAAAGAAAAAAADAAEAAAAGAAAAAAACAAEAAAAGAAAAAAABAAEAAAAGAAAAAAABAAIAAAAGAAAAAAACAAIAAAAGAAAAAAADAAIAAAAGAAAAAAAEAAIAAAAGAAAAAAAFAAIAAAAGAAAAAAAGAAIAAAAGAAAAAAAGAAAAAAAGAAAAAAAFAAAAAAAGAAAAAAABAAMAAAAGAAAAAAACAAMAAAAGAAAAAAADAAMAAAAGAAAAAAAEAAMAAAAGAAAAAAAFAAMAAAAGAAAAAAAGAAMAAAAGAAAAAAAGAAQAAAAGAAAAAAAFAAQAAAAGAAAAAAAEAAQAAAAGAAAAAAADAAQAAAAGAAAAAAACAAQAAAAGAAAAAAABAAUAAAAGAAAAAAABAAQAAAAGAAAAAAACAAUAAAAGAAAAAAADAAUAAAAGAAAAAAAEAAUAAAAGAAAAAAAFAAUAAAAGAAAAAAAGAAUAAAAGAAAAAAABAAYAAAAGAAAAAAAAAAYAAAAGAAAAAAAAAAUAAAAGAAAAAAAAAAQAAAAGAAAAAAAAAAMAAAAGAAAAAAACAAYAAAAGAAAAAAADAAYAAAAGAAAAAAAEAAYAAAAGAAAAAAAAAAIAAAAGAAAAAAAAAAEAAAAGAAAAAAAAAAAAAAAGAAAAAAAHAAAAAAAGAAAAAAAHAAEAAAAGAAAAAAAHAAIAAAAGAAAAAAAHAAMAAAAGAAAAAAAHAAQAAAAGAAAAAAAHAAUAAAAGAAAAAAAGAAYAAAAGAAAAAAAFAAYAAAAGAAAAAAAHAAYAAAAGAAAAAAA=")
+tile_set = SubResource("TileSet_r23i4")
+collision_enabled = false
+
+[node name="InteractiveLayer" type="TileMapLayer" parent="." unique_id=1598542392]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAGAAAAAAABAAcAAAAGAAMAAAADAAcAAAAAAAMAAAACAAAAAAAAAAQAAAACAAAAAAAAAAUAAAACAAAAAAAAAAYAAAACAAAAAAABAAYAAAACAAAAAAACAAYAAAACAAAAAAADAAYAAAACAAAAAAAEAAYAAAACAAAAAAA=")
+tile_set = SubResource("TileSet_3l73t")
