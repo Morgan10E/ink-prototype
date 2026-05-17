@@ -8,9 +8,9 @@
 
 [node name="MainScene" type="Node" unique_id=1496507385]
 
-[node name="StoryManager" type="CanvasLayer" parent="." unique_id=1233819320]
-visible = false
+[node name="StoryManager" type="CanvasLayer" parent="." unique_id=1233819320 node_paths=PackedStringArray("convo")]
 script = ExtResource("1_gubc5")
+convo = NodePath("Convo")
 
 [node name="Convo" parent="StoryManager" unique_id=402203327 instance=ExtResource("2_7ykc4")]
 visible = false
@@ -21,3 +21,5 @@ story = ExtResource("3_gubc5")
 [node name="Level" parent="WorldManager" unique_id=1546749756 instance=ExtResource("3_pu3yx")]
 
 [node name="Player" parent="WorldManager" unique_id=513678675 instance=ExtResource("4_gubc5")]
+
+[connection signal="thread_ended" from="StoryManager/Convo" to="StoryManager" method="CloseStory"]

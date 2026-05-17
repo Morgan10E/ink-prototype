@@ -6,16 +6,25 @@ extends Node
 @export var choice_container: VBoxContainer
 @export var timer: TimerBar
 
+signal thread_ended
+
 const CONTINUE = -1
 
 func _ready() -> void:
     continue_story()
     
+func goto_story_entrypoint(entrypoint) -> void:
+    print("Enter story:", entrypoint)
+    story.ChoosePathString(entrypoint)
+    continue_story()
+
 func continue_story() -> void:
     timer.set_timer_visible(false)
     for child_node in choice_container.get_children():
         child_node.queue_free()
 
+    if not story.GetCanContinue():
+        _save_and_close()
     story.Continue()
 
     text_label.text = story.GetCurrentText()
@@ -27,8 +36,7 @@ func continue_story() -> void:
     
     var choices = story.GetCurrentChoices()
     if len(choices) == 0:
-        if story.GetCanContinue():
-            _add_choice("continue")
+        _add_choice("continue")
     else:
         for choice in choices:
             if timed_choice and choice.Text == "timeout_target":
@@ -46,3 +54,7 @@ func _on_choice_selected(index: int):
     if index != CONTINUE:
         story.ChooseChoiceIndex(index)
     continue_story()
+
+func _save_and_close() -> void:
+    #    read out the values of variables and save them to the game
+    emit_signal("thread_ended")

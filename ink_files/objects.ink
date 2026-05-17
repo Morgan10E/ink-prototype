@@ -6,6 +6,7 @@ Best to leave it alone...
 -> END
 
 === suspicious_box ===
+
 You can't put your finger on it, but something is up with this box...
 * [Open the box] You open the box.
 ~ opened_suspicious_box = true

@@ -17,6 +17,15 @@ text_label = NodePath("RichTextLabel")
 choice_container = NodePath("VBoxContainer")
 timer = NodePath("TimerBar")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1985543941]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5019608)
+
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1355751118]
 layout_mode = 1
 anchors_preset = 14
