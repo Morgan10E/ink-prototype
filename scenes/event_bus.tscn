@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://byvewy3j46ry8"]
+
+[ext_resource type="Script" uid="uid://swub50msuimk" path="res://scenes/EventBus.cs" id="1_7xt3l"]
+
+[node name="EventBus" type="Node" unique_id=1889724982]
+script = ExtResource("1_7xt3l")

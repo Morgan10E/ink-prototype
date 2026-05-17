@@ -3,7 +3,7 @@ VAR opened_suspicious_box = false
 === skull ===
 Wh- why is there a skull here?
 Best to leave it alone...
--> end
+-> END
 
 === suspicious_box ===
 You can't put your finger on it, but something is up with this box...
@@ -11,4 +11,9 @@ You can't put your finger on it, but something is up with this box...
 ~ opened_suspicious_box = true
 Strange... there's nothing inside.
 * [Leave it, way too suspicious] You're right, that's the safer call.
-- -> end
+- -> END
+
+
+=== wall ===
+Nothing interesting to report. It's a featureless wall.
+-> END
