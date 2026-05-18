@@ -11,17 +11,18 @@ public partial class StoryManager : CanvasLayer
         EventBus.Instance.OpenInkStory += EnterInkStory;
     }
     
-    
     private void PrintInkStory(string entrypoint) {
         GD.Print($"Open ink story now! {entrypoint}");
     }
     
     private void EnterInkStory(string entrypoint) {
-        convo.Call("goto_story_entrypoint", entrypoint);
+        convo.Call("goto_story_entrypoint", entrypoint, Constants.Instance.INK_STATE);
         convo.Show();
     }
     
-    public void CloseStory() {
+    public void CloseStory(string saveState) {
         convo.Hide();
+        Constants.Instance.INK_STATE = saveState;
+        GD.Print(Constants.Instance.INK_STATE);
     }
 }
