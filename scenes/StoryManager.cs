@@ -4,7 +4,7 @@ using System;
 public partial class StoryManager : CanvasLayer
 {
     [Export]
-    public Control convo { get; set; }
+    public InkStoryController convo { get; set; }
 
     public override void _Ready() {
         EventBus.Instance.OpenInkStory += PrintInkStory;
@@ -16,7 +16,7 @@ public partial class StoryManager : CanvasLayer
     }
     
     private void EnterInkStory(string entrypoint) {
-        convo.Call("goto_story_entrypoint", entrypoint, Constants.Instance.INK_STATE);
+        convo.GotoStoryEntrypoint(entrypoint, Constants.Instance.INK_STATE);
         convo.Show();
     }
     

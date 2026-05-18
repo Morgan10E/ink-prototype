@@ -1,20 +1,20 @@
 [gd_scene format=3 uid="uid://g8cq80xb0gml"]
 
-[ext_resource type="Script" uid="uid://wiy282npd80s" path="res://scenes/ink_story_gd.gd" id="1_f6q3n"]
+[ext_resource type="Script" uid="uid://cwh13rc0jfjma" path="res://scenes/InkStoryController.cs" id="1_ovkqb"]
 [ext_resource type="Resource" uid="uid://crtqfpcs3wxsv" path="res://ink_files/test.ink" id="2_ovkqb"]
 [ext_resource type="PackedScene" uid="uid://deucoebf8ly6u" path="res://scenes/timer_bar.tscn" id="3_ovkqb"]
 
-[node name="Convo" type="Control" unique_id=402203327 node_paths=PackedStringArray("text_label", "choice_container", "timer")]
+[node name="Convo" type="Control" unique_id=402203327 node_paths=PackedStringArray("textLabel", "choiceContainer", "timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_f6q3n")
+script = ExtResource("1_ovkqb")
 story = ExtResource("2_ovkqb")
-text_label = NodePath("RichTextLabel")
-choice_container = NodePath("VBoxContainer")
+textLabel = NodePath("RichTextLabel")
+choiceContainer = NodePath("VBoxContainer")
 timer = NodePath("TimerBar")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1985543941]

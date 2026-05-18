@@ -32,10 +32,11 @@ func continue_story() -> void:
 
         text_label.text = story.GetCurrentText()
         
-        var timed_choice = story.GetCurrentTags().find("timed_choice") != -1
+        var timer_data = _get_timer()
+        var timed_choice = timer_data.timed_choice
+        var time_seconds = timer_data.time_seconds
         if timed_choice:
-            var time = story.FetchVariable("timed_seconds")
-            timer.start_timer(time)
+            timer.start_timer(time_seconds)
         
         var choices = story.GetCurrentChoices()
         if len(choices) == 0:
@@ -46,6 +47,20 @@ func continue_story() -> void:
                     timer.connect_timer(_on_choice_selected.bind(choice.Index))
                 else:
                     _add_choice(choice.Text, choice.Index)
+
+func _is_time_tag(tag: String) -> bool:
+    return tag.find("time:") == 0
+
+func _get_timer():
+    var timed_choice = story.GetCurrentTags().find("timed_choice") != -1
+    if not timed_choice:
+        return { "timed_choice": false, "time_seconds": 0 }
+    var time_tag_index = story.GetCurrentTags().find_custom(_is_time_tag.bind())
+    if time_tag_index == -1:
+        return { "timed_choice": true, "time_seconds": Constants.DEFAULT_TIME_SECONDS}
+    var time_tag = story.GetCurrentTags()[time_tag_index]
+    var time_seconds_string = time_tag.trim_prefix("time:")
+    return { "timed_choice": true, "time_seconds": time_seconds_string.to_float() }
 
 func _add_choice(text: String, id: int = CONTINUE) -> void:
     var button = Button.new()

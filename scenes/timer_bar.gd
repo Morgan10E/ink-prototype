@@ -10,7 +10,13 @@ var total_time
 func connect_timer(_callback):
     var connections = timer.get_signal_connection_list("timeout")
     for connection in connections:
-        timer.disconnect("timeout", connection.target_method)
+        if connection.has("target_method"):
+            timer.disconnect("timeout", connection.target_method)
+        if connection.has("callable"):
+            timer.disconnect("timeout", connection.callable)
+        #print("removing connection")
+        #print(connection)
+        #timer.disconnect("timeout", connection.target_method)
     timer.timeout.connect(_callback)
 
 func set_timer_visible(visible: bool):
