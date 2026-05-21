@@ -9,6 +9,8 @@
 [node name="GridMover" type="Node2D" parent="." unique_id=1775990462 node_paths=PackedStringArray("move_object", "raycast")]
 script = ExtResource("1_qhqgy")
 move_object = NodePath("..")
+time_til_stopped = 0.04
+time_til_momentum = 0.1
 raycast = NodePath("../InteractRaycast")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=903187100]
@@ -32,8 +34,9 @@ script = ExtResource("2_dqkch")
 target_position = Vector2(0, 16)
 collide_with_areas = true
 
-[node name="StoryConnector" type="Node" parent="." unique_id=1537641716]
+[node name="StoryConnector" type="Node" parent="." unique_id=1537641716 node_paths=PackedStringArray("raycast")]
 script = ExtResource("3_qlg0r")
+raycast = NodePath("../InteractRaycast")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1072279406]
 zoom = Vector2(5, 5)
@@ -42,6 +45,6 @@ limit_top = -32
 limit_right = 320
 limit_bottom = 320
 
-[connection signal="facing_ink_entrypoint" from="GridMover" to="StoryConnector" method="update_ink_entrypoint"]
+[connection signal="move_done" from="GridMover" to="StoryConnector" method="update_ink_entrypoint"]
 [connection signal="direction_pressed" from="WasdController" to="GridMover" method="move"]
 [connection signal="interact_triggered" from="WasdController" to="StoryConnector" method="trigger_story"]
