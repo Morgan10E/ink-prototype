@@ -77,7 +77,7 @@ The map is constructed using a TileMap, and we paint a non-interactive GroundLay
 
 ### TODO
 
-- [ ] "Pause the world." Support freezing the game - the convos should pause the overworld, and the player opening a pause menu should pause convos and/or the overworld.
+- [x] "Pause the world." Support freezing the game - the convos should pause the overworld, and the player opening a pause menu should pause convos and/or the overworld.
 - [ ] Configurable convo time. Rather than specifying seconds in the ink file, specify a percent of the standard time. This allows us to make the conversations easier/harder based on player preference by allowing them to tune the standard time.
 - [ ] NPC with:
   - [ ] Super basic random walk AI

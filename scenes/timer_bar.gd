@@ -32,6 +32,6 @@ func start_timer(seconds: float):
     set_timer_visible(true)
     timer.start(seconds + timer_buffer)
     
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
     if visible:
         timer_bar_fill.scale.x = (timer.time_left - timer_buffer) / total_time

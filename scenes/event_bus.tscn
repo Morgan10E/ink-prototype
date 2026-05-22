@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://swub50msuimk" path="res://scenes/EventBus.cs" id="1_7xt3l"]
 
 [node name="EventBus" type="Node" unique_id=1889724982]
+process_mode = 3
 script = ExtResource("1_7xt3l")

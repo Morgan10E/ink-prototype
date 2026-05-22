@@ -3,7 +3,7 @@ extends Node
 signal direction_pressed(direction: Vector2)
 signal interact_triggered
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
     # TODO: controls should get further abstracted out
     # so we can handle controllers or keyboards or other
     # but for now we'll assume wasd keyboard
@@ -25,3 +25,6 @@ func _process(delta: float) -> void:
         # actions the user can take while standing still
         if Input.is_action_just_pressed("ui_select"):
             emit_signal("interact_triggered")
+    
+    #if Input.is_action_just_pressed("ui_cancel"):
+        #EventBus.emit_signal("TogglePause")

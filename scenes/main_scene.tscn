@@ -1,25 +1,48 @@
 [gd_scene format=3 uid="uid://65fmk5fpaqoo"]
 
 [ext_resource type="Script" uid="uid://7548a7fva4rn" path="res://scenes/StoryManager.cs" id="1_gubc5"]
+[ext_resource type="Script" uid="uid://bttq71gqrj061" path="res://scenes/TimeLord.cs" id="1_rt2n2"]
 [ext_resource type="PackedScene" uid="uid://g8cq80xb0gml" path="res://scenes/convo.tscn" id="2_7ykc4"]
-[ext_resource type="Resource" uid="uid://bg57kaabifouw" path="res://ink_files/main.ink" id="3_gubc5"]
 [ext_resource type="PackedScene" uid="uid://dffp3g71pjan5" path="res://scenes/level.tscn" id="3_pu3yx"]
 [ext_resource type="PackedScene" uid="uid://cen43hun4im0k" path="res://scenes/player.tscn" id="4_gubc5"]
+[ext_resource type="Script" uid="uid://b03rite066mao" path="res://scenes/pause_close_button.gd" id="6_rt2n2"]
 
-[node name="MainScene" type="Node" unique_id=1496507385]
+[node name="MainScene" type="Node" unique_id=1496507385 node_paths=PackedStringArray("pauseMenu", "storyManager", "worldManager")]
+process_mode = 3
+script = ExtResource("1_rt2n2")
+pauseMenu = NodePath("PauseMenu")
+storyManager = NodePath("StoryManager")
+worldManager = NodePath("WorldManager")
 
 [node name="StoryManager" type="CanvasLayer" parent="." unique_id=1233819320 node_paths=PackedStringArray("convo")]
+process_mode = 3
 script = ExtResource("1_gubc5")
 convo = NodePath("Convo")
 
 [node name="Convo" parent="StoryManager" unique_id=402203327 instance=ExtResource("2_7ykc4")]
 visible = false
-story = ExtResource("3_gubc5")
 
 [node name="WorldManager" type="Node" parent="." unique_id=1741334545]
+process_mode = 1
 
 [node name="Level" parent="WorldManager" unique_id=1546749756 instance=ExtResource("3_pu3yx")]
 
 [node name="Player" parent="WorldManager" unique_id=513678675 instance=ExtResource("4_gubc5")]
 
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=41487134]
+process_mode = 4
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu" unique_id=399058784]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 0, 1, 1)
+
+[node name="Button" type="Button" parent="PauseMenu" unique_id=164090987]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Close"
+script = ExtResource("6_rt2n2")
+
 [connection signal="ThreadEnded" from="StoryManager/Convo" to="StoryManager" method="CloseStory"]
+[connection signal="ThreadEnded" from="StoryManager/Convo" to="." method="CloseStory" unbinds=1]
