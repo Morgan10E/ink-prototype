@@ -73,3 +73,12 @@ Movement is grid-based, and right now the logic is best explored in the Player (
 
 
 The map is constructed using a TileMap, and we paint a non-interactive GroundLayer and an InteractiveLayer. The InteractiveLayer has collisions turned on, with physics and a custom ink_entrypoint painted on. The collisions are handled by the Player's GridMover.
+
+
+### TODO
+
+- [ ] "Pause the world." Support freezing the game - the convos should pause the overworld, and the player opening a pause menu should pause convos and/or the overworld.
+- [ ] Configurable convo time. Rather than specifying seconds in the ink file, specify a percent of the standard time. This allows us to make the conversations easier/harder based on player preference by allowing them to tune the standard time.
+- [ ] NPC with:
+  - [ ] Super basic random walk AI
+  - [ ] An ink entrypoint to converse with the player
