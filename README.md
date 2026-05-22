@@ -64,6 +64,12 @@ will open on the screen.
 
 Movement is grid-based, and right now the logic is best explored in the Player (we don't have NPCs yet).
 
-1. The GridMover component, which uses an InteractRaycast. The raycast is used to determine if there is something blocking the player and/or an Ink entrypoint in front of the player. It fires off a "facing ink entrypoint" signal if the latter (connected to the StoryConnector).
+1. The GridMover component, which uses an InteractRaycast. The raycast is used to determine if there is something blocking the player. It fires:
+  a. facing_direction: connected to the AnimationMock
+  b. moving: connected to the AnimationMock, StoryConnector unset ink entrypoint
+  c. move_done: connected to the AnimationMock, StoryConnector update ink entrypoint
 2. WASD controller, a super basic keyboard controller for the player. It fires off "direction pressed" events (connected to the GridMover) and "interact triggered" events (connected to the StoryConnector).
-3. The StoryConnector keeps track of the most recent ink entrypoint, and if "interact triggered" comes its way it in turn sends "OpenInkStory" to the EventBus (singleton that is auto-attached to every scene - simplest way to get an event out of the Player scene).
+3. The StoryConnector keeps track of the most recent ink entrypoint, and if "interact triggered" comes its way it in turn sends "OpenInkStory" via the EventBus (singleton that is auto-attached to every scene - simplest way to get an event out of the Player scene). It shares the raycast with the GridMover - it uses it to read "ink_entrypoint" off the custom data on the TileMap.
+
+
+The map is constructed using a TileMap, and we paint a non-interactive GroundLayer and an InteractiveLayer. The InteractiveLayer has collisions turned on, with physics and a custom ink_entrypoint painted on. The collisions are handled by the Player's GridMover.

@@ -16,6 +16,9 @@ func update_ink_entrypoint():
                 var value = tile_data.get_custom_data("ink_entrypoint")
                 last_ink_entrypoint = value
 
+func unset_ink_entrypoint():
+    set_ink_entrypoint("")
+
 func set_ink_entrypoint(new_entrypoint: String):
     last_ink_entrypoint = new_entrypoint
 

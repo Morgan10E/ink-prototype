@@ -8,13 +8,15 @@ extends Node2D
 
 var grid_position: Vector2 = Vector2.ZERO
 var moving_direction: Vector2 = Vector2.ZERO
-var facing_direction: Vector2 = Vector2.DOWN
+var facing_direction: Vector2i = Vector2.DOWN
 
 var has_momentum: bool = false
 var movement_attempted: bool = false
 var slowdown_timer: float = 0
 var speedup_timer: float = 0
 
+signal face_direction(direction: Vector2i)
+signal moving
 signal move_done
 
 func _process(delta: float) -> void:
@@ -35,6 +37,7 @@ func _process(delta: float) -> void:
 func move(direction: Vector2):
     movement_attempted = true
     if not is_moving() and direction.length() > 0:
+        emit_signal("moving")
         var new_facing_direction = normalize_direction(direction)
         if facing_direction != new_facing_direction:
             # rotate in place if facing a new direction
@@ -65,7 +68,7 @@ func is_moving() -> bool:
     return moving_direction.length() > 0
 
 # Set to a cardinal direction in priority order: NESW
-func normalize_direction(direction: Vector2) -> Vector2:
+func normalize_direction(direction: Vector2) -> Vector2i:
     if direction.y > 0:
         return Vector2.UP
     if direction.x > 0:
@@ -85,4 +88,5 @@ func get_coordinates_from_vector2(int_coords: Vector2):
 func update_direction():
     raycast.target_position = facing_direction * Constants.TILE_SIZE
     raycast.force_raycast_update()
+    emit_signal("face_direction", facing_direction)
     emit_signal("move_done")
