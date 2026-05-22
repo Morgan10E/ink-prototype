@@ -5,6 +5,7 @@ extends Node
 var last_ink_entrypoint: String = ""
 
 func update_ink_entrypoint():
+    print("update ink entrypoint!")
     last_ink_entrypoint = ""
     var colliding_with = raycast.get_collider()
     if colliding_with != null:

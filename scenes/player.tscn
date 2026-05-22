@@ -49,6 +49,7 @@ limit_right = 320
 limit_bottom = 320
 
 [connection signal="face_direction" from="GridMover" to="AnimationMock" method="updateDirection"]
+[connection signal="face_direction" from="GridMover" to="StoryConnector" method="update_ink_entrypoint" unbinds=1]
 [connection signal="move_done" from="GridMover" to="AnimationMock" method="MovingStop"]
 [connection signal="move_done" from="GridMover" to="StoryConnector" method="update_ink_entrypoint"]
 [connection signal="moving" from="GridMover" to="AnimationMock" method="MovingStart"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://g8cq80xb0gml"]
 
 [ext_resource type="Script" uid="uid://cwh13rc0jfjma" path="res://scenes/InkStoryController.cs" id="1_ovkqb"]
-[ext_resource type="Resource" uid="uid://crtqfpcs3wxsv" path="res://ink_files/test.ink" id="2_ovkqb"]
+[ext_resource type="Resource" uid="uid://bg57kaabifouw" path="res://ink_files/main.ink" id="2_ovkqb"]
 [ext_resource type="PackedScene" uid="uid://deucoebf8ly6u" path="res://scenes/timer_bar.tscn" id="3_ovkqb"]
 
 [node name="Convo" type="Control" unique_id=402203327 node_paths=PackedStringArray("textLabel", "choiceContainer", "timer")]

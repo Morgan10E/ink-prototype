@@ -37,7 +37,6 @@ func _process(delta: float) -> void:
 func move(direction: Vector2):
     movement_attempted = true
     if not is_moving() and direction.length() > 0:
-        emit_signal("moving")
         var new_facing_direction = normalize_direction(direction)
         if facing_direction != new_facing_direction:
             # rotate in place if facing a new direction
@@ -52,6 +51,7 @@ func move_forward() -> void:
     if colliding_with != null:
         return
 
+    emit_signal("moving")
     moving_direction = facing_direction
     grid_position = grid_position + moving_direction
     var new_position = get_coordinates_from_vector2(grid_position)
@@ -89,4 +89,3 @@ func update_direction():
     raycast.target_position = facing_direction * Constants.TILE_SIZE
     raycast.force_raycast_update()
     emit_signal("face_direction", facing_direction)
-    emit_signal("move_done")
