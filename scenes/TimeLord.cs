@@ -25,6 +25,7 @@ public partial class TimeLord : Node
         activeGameState = GameState.WORLD;
         EventBus.Instance.OpenInkStory += PlayStory;
         EventBus.Instance.CloseStory += CloseStory;
+        EventBus.Instance.TogglePause += TogglePause;
     }
     
     private void PlayStory(string entrypoint) {

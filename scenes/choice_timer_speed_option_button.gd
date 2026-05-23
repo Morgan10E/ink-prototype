@@ -10,4 +10,4 @@ func _on_item_selected(index: int) -> void:
         Constants.TIMER_ENABLED = false
     else:
         Constants.TIMER_ENABLED = true
-        Constants.BASE_TIME_SECONDS = Constants.SPEED_OPTIONS[index]
+        Constants.CURRENT_TIME_MULTIPLIER = Constants.TIME_OPTIONS[index]

@@ -6,7 +6,7 @@ class_name TimerBar
 
 var total_time: float
 var remaining_time: float
-var timer_running: bool
+var timer_running: bool = false
 
 signal timer_expired
 
@@ -16,27 +16,21 @@ func _process(delta: float) -> void:
             emit_signal("timer_expired")
             timer_running = false
         else:
-            var step_multiplier = _get_step_multiplier()
-            remaining_time -= delta * step_multiplier
+            remaining_time -= delta * Constants.CURRENT_TIME_MULTIPLIER
     
     if visible:
         timer_bar_fill.scale.x = remaining_time / total_time
 
-func set_timer_visible(visible: bool):
-    if visible:
+func set_timer_visible(to_visible: bool):
+    if to_visible:
         show()
     else:
         timer_running = false
         hide()
 
 func start_timer(seconds: float):
-    total_time = seconds * Constants.BASE_TIME_SECONDS
+    total_time = seconds
     remaining_time = total_time
     timer_bar_fill.scale.x = 1.0
     set_timer_visible(true)
     timer_running = true
-
-func _get_step_multiplier() -> float:
-    var standard_time = Constants.STANDARD_TIME_SECONDS
-    var current_base_time = Constants.BASE_TIME_SECONDS
-    return standard_time / current_base_time

@@ -21,10 +21,8 @@ public partial class InkStoryController : Control
     public delegate void ThreadEndedEventHandler(String currentSaveState);
     
     private const int CONTINUE = -1;
-    
-    public override void _Ready() {
-        _ContinueStory();
-    }
+    private const string timeoutTarget = "timeout_target";
+    private int timeoutStringLength = 15; // "timeout_target:<we want this>"
     
     public void GotoStoryEntrypoint(String entrypoint, String currentSaveState) {
         if (currentSaveState != "") {
@@ -45,24 +43,34 @@ public partial class InkStoryController : Control
         } else {
             story.Continue();
 
-            textLabel.Text = story.GetCurrentText();
-            
-            var (timedChoice, timeSeconds) = _GetTimer();
+            ResetConvoDisplay();
+        }
+    }
+    
+    public void ResetConvoDisplay() {
+        textLabel.Text = story.GetCurrentText();
+        
+        var (timedChoice, timeSeconds) = _GetTimer();
+        if (Constants.Instance.TIMER_ENABLED) {
             if (timedChoice) {
                 timer.Call("start_timer", timeSeconds);
             }
+        }
             
-            var choices = story.GetCurrentChoices();
-            if (choices.Count == 0) {
-                _AddChoice("continue");
-            } else {
-                foreach (InkChoice choice in choices) {
-                    if (timedChoice && choice.Text == "timeout_target") {
+        var choices = story.GetCurrentChoices();
+        if (choices.Count == 0) {
+            _AddChoice("continue");
+        } else {
+            foreach (InkChoice choice in choices) {
+                if (timedChoice && choice.Text.StartsWith(timeoutTarget)) {
+                    if (Constants.Instance.TIMER_ENABLED) {
                         var timeoutCallable = () => _OnChoiceSelected(choice.Index);
                         timer.Connect("timer_expired", Callable.From(timeoutCallable));
                     } else {
-                        _AddChoice(choice.Text, choice.Index);
+                        _AddChoice(choice.Text.Substring(timeoutStringLength), choice.Index);
                     }
+                } else {
+                    _AddChoice(choice.Text, choice.Index);
                 }
             }
         }
@@ -82,7 +90,7 @@ public partial class InkStoryController : Control
                 return (true, timeSeconds);
             }
         }
-        return (true, Constants.Instance.BASE_TIME_SECONDS);
+        return (true, Constants.Instance.DEFAULT_TIME_SECONDS);
     }
     
     private void _AddChoice(String text, int id = CONTINUE) {
