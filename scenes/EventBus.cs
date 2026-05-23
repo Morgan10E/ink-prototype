@@ -11,6 +11,8 @@ public partial class EventBus : Node
     public delegate void CloseStoryEventHandler();
     [Signal]
     public delegate void TogglePauseEventHandler();
+    [Signal]
+    public delegate void TimerEnabledChangedEventHandler();
 
     public override void _Ready() {
         Instance = this;

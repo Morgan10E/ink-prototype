@@ -24,6 +24,10 @@ public partial class InkStoryController : Control
     private const string timeoutTarget = "timeout_target";
     private int timeoutStringLength = 15; // "timeout_target:<we want this>"
     
+    public override void _Ready() {
+        EventBus.Instance.TimerEnabledChanged += ResetConvoDisplay;
+    }
+    
     public void GotoStoryEntrypoint(String entrypoint, String currentSaveState) {
         if (currentSaveState != "") {
             story.LoadState(currentSaveState);
@@ -33,11 +37,6 @@ public partial class InkStoryController : Control
     }
     
     private void _ContinueStory() {
-        timer.Call("set_timer_visible", false);
-        foreach (Node childNode in choiceContainer.GetChildren()) {
-            childNode.QueueFree();
-        }
-
         if (!story.GetCanContinue()) {
             _Close();
         } else {
@@ -48,6 +47,11 @@ public partial class InkStoryController : Control
     }
     
     public void ResetConvoDisplay() {
+        timer.Call("set_timer_visible", false);
+        foreach (Node childNode in choiceContainer.GetChildren()) {
+            childNode.QueueFree();
+        }
+    
         textLabel.Text = story.GetCurrentText();
         
         var (timedChoice, timeSeconds) = _GetTimer();
