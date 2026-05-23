@@ -24,7 +24,6 @@ public partial class TimeLord : Node
         isPaused = false;
         activeGameState = GameState.WORLD;
         EventBus.Instance.OpenInkStory += PlayStory;
-        EventBus.Instance.TogglePause += TogglePause;
         EventBus.Instance.CloseStory += CloseStory;
     }
     

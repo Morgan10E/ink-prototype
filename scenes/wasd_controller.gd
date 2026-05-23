@@ -25,6 +25,3 @@ func _process(_delta: float) -> void:
         # actions the user can take while standing still
         if Input.is_action_just_pressed("ui_select"):
             emit_signal("interact_triggered")
-    
-    #if Input.is_action_just_pressed("ui_cancel"):
-        #EventBus.emit_signal("TogglePause")
