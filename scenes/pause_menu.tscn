@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://blw0jhdwnpp23"]
+
+[ext_resource type="Script" uid="uid://b03rite066mao" path="res://scenes/pause_close_button.gd" id="1_n87rw"]
+[ext_resource type="Script" uid="uid://bjuohj2avt4kv" path="res://scenes/choice_timer_speed_option_button.gd" id="2_myx47"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1652449301]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=444789388]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 1, 0.3647059)
+
+[node name="Button" type="Button" parent="." unique_id=778179154]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Close"
+script = ExtResource("1_n87rw")
+
+[node name="ChoiceTimerSpeedOptionButton" type="OptionButton" parent="." unique_id=128400656]
+offset_left = 69.0
+offset_top = 146.0
+offset_right = 175.0
+offset_bottom = 177.0
+selected = 1
+allow_reselect = true
+item_count = 5
+popup/item_0/text = "Ultra-fast"
+popup/item_0/id = 0
+popup/item_1/text = "Normal"
+popup/item_1/id = 1
+popup/item_2/text = "Slow"
+popup/item_2/id = 2
+popup/item_3/text = "Slower"
+popup/item_3/id = 3
+popup/item_4/text = "No timed elements"
+popup/item_4/id = 4
+script = ExtResource("2_myx47")
+
+[connection signal="item_selected" from="ChoiceTimerSpeedOptionButton" to="ChoiceTimerSpeedOptionButton" method="_on_item_selected"]

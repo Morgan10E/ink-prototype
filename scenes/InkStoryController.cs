@@ -59,7 +59,7 @@ public partial class InkStoryController : Control
                 foreach (InkChoice choice in choices) {
                     if (timedChoice && choice.Text == "timeout_target") {
                         var timeoutCallable = () => _OnChoiceSelected(choice.Index);
-                        timer.Call("connect_timer", Callable.From(timeoutCallable));
+                        timer.Connect("timer_expired", Callable.From(timeoutCallable));
                     } else {
                         _AddChoice(choice.Text, choice.Index);
                     }
@@ -82,7 +82,7 @@ public partial class InkStoryController : Control
                 return (true, timeSeconds);
             }
         }
-        return (true, Constants.Instance.DEFAULT_TIME_SECONDS);
+        return (true, Constants.Instance.BASE_TIME_SECONDS);
     }
     
     private void _AddChoice(String text, int id = CONTINUE) {

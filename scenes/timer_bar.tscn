@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dnitvlg7eqbm0" path="res://scenes/timer_bar.gd" id="1_pvehb"]
 
-[node name="TimerBar" type="ColorRect" unique_id=1706790987 node_paths=PackedStringArray("timer_bar_fill", "timer")]
+[node name="TimerBar" type="ColorRect" unique_id=1706790987 node_paths=PackedStringArray("timer_bar_fill")]
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
@@ -13,7 +13,6 @@ grow_vertical = 2
 color = Color(0.32156864, 0.32941177, 0.34117648, 1)
 script = ExtResource("1_pvehb")
 timer_bar_fill = NodePath("TimerBarFill")
-timer = NodePath("Timer")
 
 [node name="TimerBarFill" type="ColorRect" parent="." unique_id=1715968897]
 layout_mode = 1
@@ -25,6 +24,3 @@ offset_top = -4.5
 offset_bottom = 4.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Timer" type="Timer" parent="." unique_id=1097884111]
-one_shot = true
