@@ -29,7 +29,6 @@ process_mode = 1
 [node name="Level" parent="WorldManager" unique_id=1546749756 instance=ExtResource("3_pu3yx")]
 
 [node name="NPC" parent="WorldManager" unique_id=513678675 instance=ExtResource("5_c16ls")]
-position = Vector2(10, 10)
 
 [node name="Player" parent="WorldManager" unique_id=127862252 instance=ExtResource("4_gubc5")]
 
