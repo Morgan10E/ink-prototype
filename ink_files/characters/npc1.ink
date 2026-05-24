@@ -2,9 +2,12 @@
 Oh, hello!
 Didn't expect to see you around.
 What's up?
-+ [Nothing] Nothing much. -> brief_bye
-+ Uh, the sky? -> brief_bye
-+ [I'm running for mayor, have you heard?] I really think I can make a difference! -> running
++ [Nothing] Nothing much.
+-> brief_bye
++ Uh, the sky?
+-> brief_bye
++ [I'm running for mayor, have you heard?] I really think I can make a difference!
+-> running
 
 === brief_bye ===
 'kay...
@@ -13,9 +16,12 @@ What's up?
 === running ===
 Oh yeah, I think I heard that...
 What's your platform?
-+ [Universal healthcare.] Those bills were killer after my accident. -> healthcare
-+ [What do you think they should be?] -> they_pick
-+ [I just want people to do what I say.] And monarchy isn't a thing here, so... -> ruler
++ [Universal healthcare.] Those bills were killer after my accident.
+-> healthcare
++ [What do you think they should be?]
+-> they_pick
++ [I just want people to do what I say.] And monarchy isn't a thing here, so...
+-> ruler
 
 === healthcare ===
 Oh, yeah, that sounds tough.
