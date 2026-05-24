@@ -1,5 +1,7 @@
 extends Node2D
 
+# realistically only the player should use momentum
+@export var use_momentum: bool
 @export var move_object: Node2D
 @export var speed = 0.25
 @export var time_til_stopped: float = 1
@@ -20,6 +22,11 @@ signal moving
 signal move_done
 
 func _process(delta: float) -> void:
+    # technically it's fine if we run all this if we aren't using momentum
+    # but why not save the effort?
+    if not use_momentum:
+        return
+
     slowdown_timer += delta
     speedup_timer += delta
     if movement_attempted:
@@ -42,7 +49,7 @@ func move(direction: Vector2):
             # rotate in place if facing a new direction
             facing_direction = new_facing_direction
             update_direction()
-        elif has_momentum:
+        elif not use_momentum or has_momentum:
             # if already facing this direction, move
             move_forward()
 

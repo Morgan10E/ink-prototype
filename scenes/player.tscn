@@ -9,6 +9,7 @@
 
 [node name="GridMover" type="Node2D" parent="." unique_id=1775990462 node_paths=PackedStringArray("move_object", "raycast")]
 script = ExtResource("1_qhqgy")
+use_momentum = true
 move_object = NodePath("..")
 time_til_stopped = 0.04
 time_til_momentum = 0.1

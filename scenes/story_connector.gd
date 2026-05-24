@@ -15,6 +15,8 @@ func update_ink_entrypoint():
             if tile_data:
                 var value = tile_data.get_custom_data("ink_entrypoint")
                 last_ink_entrypoint = value
+        if colliding_with is CollisionStoryEntrypoint:
+            last_ink_entrypoint = colliding_with.get_entrypoint()
 
 func unset_ink_entrypoint():
     set_ink_entrypoint("")

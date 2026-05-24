@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bvo8wit7j68ex"]
+
+[ext_resource type="Script" uid="uid://cjkahwjqg2fk" path="res://scenes/grid_mover.gd" id="1_7n8xq"]
+[ext_resource type="Script" uid="uid://bk8cgsj8f7sd1" path="res://scenes/npc.gd" id="1_tl2vt"]
+[ext_resource type="Script" uid="uid://chq22ar7c64nm" path="res://scenes/AnimationMock.cs" id="2_4wlns"]
+[ext_resource type="Script" uid="uid://cor78e1hkcpla" path="res://scenes/random_walk_ai.gd" id="4_7n8xq"]
+[ext_resource type="Script" uid="uid://j0bpv42wey1r" path="res://scenes/story_connector.gd" id="4_hwkja"]
+[ext_resource type="Script" uid="uid://cmdecvdahs26s" path="res://scenes/npc_ink_entrypoint.gd" id="5_4wlns"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7n8xq"]
+
+[node name="NPC" type="CharacterBody2D" unique_id=530488666]
+script = ExtResource("1_tl2vt")
+ink_entrypoint = "npc1"
+
+[node name="GridMover" type="Node2D" parent="." unique_id=1775990462 node_paths=PackedStringArray("move_object", "raycast")]
+script = ExtResource("1_7n8xq")
+move_object = NodePath("..")
+time_til_stopped = 0.04
+time_til_momentum = 0.1
+raycast = NodePath("../InteractRaycast")
+
+[node name="AnimationMock" type="ColorRect" parent="." unique_id=903187100]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 1)
+script = ExtResource("2_4wlns")
+directionColors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1)
+
+[node name="InteractRaycast" type="RayCast2D" parent="." unique_id=1203884288]
+target_position = Vector2(0, 16)
+collide_with_areas = true
+
+[node name="StoryConnector" type="Node" parent="." unique_id=1537641716 node_paths=PackedStringArray("raycast")]
+script = ExtResource("4_hwkja")
+raycast = NodePath("../InteractRaycast")
+
+[node name="RandomWalkAI" type="Node" parent="." unique_id=1897701186]
+script = ExtResource("4_7n8xq")
+
+[node name="StepTimer" type="Timer" parent="RandomWalkAI" unique_id=599858418]
+autostart = true
+
+[node name="StoryEntryCollisionShape2D" type="CollisionShape2D" parent="." unique_id=503531707]
+shape = SubResource("RectangleShape2D_7n8xq")
+script = ExtResource("5_4wlns")
+
+[connection signal="face_direction" from="GridMover" to="AnimationMock" method="updateDirection"]
+[connection signal="face_direction" from="GridMover" to="StoryConnector" method="update_ink_entrypoint" unbinds=1]
+[connection signal="move_done" from="GridMover" to="AnimationMock" method="MovingStop"]
+[connection signal="move_done" from="GridMover" to="StoryConnector" method="update_ink_entrypoint"]
+[connection signal="move_done" from="GridMover" to="." method="reveal_entrypoint"]
+[connection signal="moving" from="GridMover" to="AnimationMock" method="MovingStart"]
+[connection signal="moving" from="GridMover" to="StoryConnector" method="unset_ink_entrypoint"]
+[connection signal="moving" from="GridMover" to="." method="hide_entrypoint"]
+[connection signal="move_direction" from="RandomWalkAI" to="GridMover" method="move"]
+[connection signal="timeout" from="RandomWalkAI/StepTimer" to="RandomWalkAI" method="move_random_direction"]
