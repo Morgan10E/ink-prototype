@@ -54,6 +54,10 @@ public partial class InkStoryController : Control
     
         textLabel.Text = story.GetCurrentText();
         
+        var name = _GetName();
+        GD.Print("Name:");
+        GD.Print(name);
+        
         var (timedChoice, timeSeconds) = _GetTimer();
         if (Constants.Instance.TIMER_ENABLED) {
             if (timedChoice) {
@@ -95,6 +99,19 @@ public partial class InkStoryController : Control
             }
         }
         return (true, Constants.Instance.DEFAULT_TIME_SECONDS);
+    }
+    
+    private (bool, String) _GetName() {
+        var tagList = story.GetCurrentTags();
+        foreach (string tag in tagList) {
+            if (tag.StartsWith("name:")) {
+                var nameParts = tag.Split(":");
+                var nameString = nameParts[1];
+                var fullName = (String)Constants.Instance.characters[nameString];
+                return (true, fullName);
+            }
+        }
+        return (false, "");
     }
     
     private void _AddChoice(String text, int id = CONTINUE) {

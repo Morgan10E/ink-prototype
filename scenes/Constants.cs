@@ -13,7 +13,25 @@ public partial class Constants : Node
 
     public string INK_STATE = "";
     
+    public Godot.Collections.Dictionary characters = new Godot.Collections.Dictionary();
+    
     public override void _Ready() {
         Instance = this;
+        
+        LoadCharactersConfig();
+    }
+    
+    private void LoadCharactersConfig() {
+        var config = new ConfigFile();
+        Error err = config.Load("res://ink_files/characters.cfg");
+        if (err != Error.Ok) {
+            // TODO: throw some kind of error
+            return;
+        }
+        
+        foreach (String tagName in config.GetSections()) {
+            var longName = (String)config.GetValue(tagName, "full_name");
+            characters[tagName] = longName;
+        }
     }
 }
