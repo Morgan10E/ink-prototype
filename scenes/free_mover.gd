@@ -1,4 +1,4 @@
-extends Node2D
+extends CollisionShape2D
 
 # realistically only the player should use momentum
 @export var use_momentum: bool
@@ -25,13 +25,9 @@ func move(direction: Vector2):
         emit_signal("move_done")
 
 func move_forward(direction: Vector2) -> void:
-    var colliding_with = raycast.get_collider()
-    if colliding_with != null:
-        return
-
     emit_signal("moving")
-    move_object.position = move_object.position + speed * direction * Vector2(1, -1) # reverse y since positive y is down
     moving_direction = direction
+    move_object.move_and_collide(moving_direction)
 
 func finish_move() -> void:
     moving_direction = Vector2.ZERO
@@ -46,13 +42,13 @@ func is_moving() -> bool:
 # direction has the most magnitude.
 # Fallback to priority order in case of tie: NESW
 func normalize_direction(direction: Vector2) -> Vector2i:
-    if - direction.y * facing_direction.y > 0 || direction.x * facing_direction.x > 0: # reverse y since positive y is down
+    if direction.y * facing_direction.y > 0 || direction.x * facing_direction.x > 0:
         return facing_direction
 
     if abs(direction.x) > abs(direction.y):
         return Vector2(direction.x / abs(direction.x), 0)
     if abs(direction.y) > abs(direction.x):
-        return Vector2(0, - direction.y / abs(direction.y)) # reverse y since positive y is down
+        return Vector2(0, direction.y / abs(direction.y))
 
     if direction.y > 0:
         return Vector2.UP

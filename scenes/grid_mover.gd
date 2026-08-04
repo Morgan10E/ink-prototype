@@ -76,11 +76,11 @@ func is_moving() -> bool:
 
 # Set to a cardinal direction in priority order: NESW
 func normalize_direction(direction: Vector2) -> Vector2i:
-    if direction.y > 0:
+    if direction.y < 0:
         return Vector2.UP
     if direction.x > 0:
         return Vector2.RIGHT
-    if direction.y < 0:
+    if direction.y > 0:
         return Vector2.DOWN
     if direction.x < 0:
         return Vector2.LEFT

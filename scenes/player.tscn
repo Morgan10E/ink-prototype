@@ -6,10 +6,11 @@
 [ext_resource type="Script" uid="uid://j0bpv42wey1r" path="res://scenes/story_connector.gd" id="3_qlg0r"]
 [ext_resource type="Script" uid="uid://qr3r2dggd8yu" path="res://scenes/free_mover.gd" id="5_qlg0r"]
 
-[node name="Player" type="Node2D" unique_id=513678675]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
+
+[node name="Player" type="CharacterBody2D" unique_id=1072440444]
 
 [node name="GridMover" type="Node2D" parent="." unique_id=1775990462 node_paths=PackedStringArray("move_object", "raycast")]
-process_mode = 4
 script = ExtResource("1_qhqgy")
 use_momentum = true
 move_object = NodePath("..")
@@ -51,7 +52,9 @@ limit_top = -32
 limit_right = 320
 limit_bottom = 320
 
-[node name="FreeMover" type="Node2D" parent="." unique_id=1748245893 node_paths=PackedStringArray("move_object", "raycast")]
+[node name="FreeMover" type="CollisionShape2D" parent="." unique_id=2134440628 node_paths=PackedStringArray("move_object", "raycast")]
+process_mode = 4
+shape = SubResource("RectangleShape2D_qlg0r")
 script = ExtResource("5_qlg0r")
 move_object = NodePath("..")
 raycast = NodePath("../InteractRaycast")
@@ -62,7 +65,7 @@ raycast = NodePath("../InteractRaycast")
 [connection signal="move_done" from="GridMover" to="StoryConnector" method="update_ink_entrypoint"]
 [connection signal="moving" from="GridMover" to="AnimationMock" method="MovingStart"]
 [connection signal="moving" from="GridMover" to="StoryConnector" method="unset_ink_entrypoint"]
-[connection signal="direction_pressed" from="WasdController" to="FreeMover" method="move"]
+[connection signal="direction_pressed" from="WasdController" to="GridMover" method="move"]
 [connection signal="interact_triggered" from="WasdController" to="StoryConnector" method="trigger_story"]
 [connection signal="face_direction" from="FreeMover" to="AnimationMock" method="updateDirection"]
 [connection signal="face_direction" from="FreeMover" to="StoryConnector" method="update_ink_entrypoint"]
