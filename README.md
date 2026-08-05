@@ -82,7 +82,7 @@ The map is constructed using a TileMap, and we paint a non-interactive GroundLay
 - [x] NPC with:
   - [x] Super basic random walk AI
   - [x] An ink entrypoint to converse with the player
-- [ ] Tag whether text is spoken by the player or the character
-  - [ ] Make the difference visually distinct
+- [x] Tag whether text is spoken by the player or the character
+  - [x] Make the difference visually distinct
 - [ ] Read Ink state to affect the world
 - [ ] Input world state to Ink

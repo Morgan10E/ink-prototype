@@ -9,6 +9,9 @@ public partial class InkStoryController : Control
     public InkStory story;
     
     [Export]
+    public RichTextLabel characterNameLabel;
+    
+    [Export]
     public RichTextLabel textLabel;
     
     [Export]
@@ -51,12 +54,15 @@ public partial class InkStoryController : Control
         foreach (Node childNode in choiceContainer.GetChildren()) {
             childNode.QueueFree();
         }
+        textLabel.Text = "";
+        characterNameLabel.Text = "";
     
         textLabel.Text = story.GetCurrentText();
         
-        var name = _GetName();
-        GD.Print("Name:");
-        GD.Print(name);
+        var (hasName, name) = _GetName();
+        if (hasName) {
+            characterNameLabel.Text = name;
+        }
         
         var (timedChoice, timeSeconds) = _GetTimer();
         if (Constants.Instance.TIMER_ENABLED) {

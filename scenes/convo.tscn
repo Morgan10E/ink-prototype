@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://bg57kaabifouw" path="res://ink_files/main.ink" id="2_ovkqb"]
 [ext_resource type="PackedScene" uid="uid://deucoebf8ly6u" path="res://scenes/timer_bar.tscn" id="3_ovkqb"]
 
-[node name="Convo" type="Control" unique_id=402203327 node_paths=PackedStringArray("textLabel", "choiceContainer", "timer")]
+[node name="Convo" type="Control" unique_id=402203327 node_paths=PackedStringArray("characterNameLabel", "textLabel", "choiceContainer", "timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ovkqb")
 story = ExtResource("2_ovkqb")
+characterNameLabel = NodePath("CharacterName")
 textLabel = NodePath("RichTextLabel")
 choiceContainer = NodePath("VBoxContainer")
 timer = NodePath("TimerBar")
@@ -34,6 +35,19 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 offset_top = -95.0
 offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CharacterName" type="RichTextLabel" parent="." unique_id=1225182669]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -175.0
+offset_right = -669.0
+offset_bottom = -88.0
 grow_horizontal = 2
 grow_vertical = 2
 
