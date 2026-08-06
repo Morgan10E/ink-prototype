@@ -70,7 +70,7 @@ Movement is grid-based, and right now the logic is best explored in the Player (
   c. move_done: connected to the AnimationMock, StoryConnector update ink entrypoint
 2. WASD controller, a super basic keyboard controller for the player. It fires off "direction pressed" events (connected to the GridMover) and "interact triggered" events (connected to the StoryConnector).
 3. The StoryConnector keeps track of the most recent ink entrypoint, and if "interact triggered" comes its way it in turn sends "OpenInkStory" via the EventBus (singleton that is auto-attached to every scene - simplest way to get an event out of the Player scene). It shares the raycast with the GridMover - it uses it to read "ink_entrypoint" off the custom data on the TileMap.
-
+4. StoryConnector also sets up the 'read' and 'write' external functions for Ink to get game state - Ink should only work with temp variables so the core state stays in one place.
 
 The map is constructed using a TileMap, and we paint a non-interactive GroundLayer and an InteractiveLayer. The InteractiveLayer has collisions turned on, with physics and a custom ink_entrypoint painted on. The collisions are handled by the Player's GridMover.
 
@@ -86,3 +86,4 @@ The map is constructed using a TileMap, and we paint a non-interactive GroundLay
   - [x] Make the difference visually distinct
 - [x] Read Ink state to affect the world
 - [x] Input world state to Ink
+- [ ] Make a main menu, start the game from there
