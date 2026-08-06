@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://xobq007522dr"]
+
+[ext_resource type="Script" uid="uid://bfmo2h8kp3c3b" path="res://scenes/world_state.gd" id="1_isjox"]
+
+[node name="WorldState" type="Node" unique_id=1889724982]
+process_mode = 3
+script = ExtResource("1_isjox")

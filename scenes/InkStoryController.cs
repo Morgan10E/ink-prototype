@@ -29,6 +29,14 @@ public partial class InkStoryController : Control
     
     public override void _Ready() {
         EventBus.Instance.TimerEnabledChanged += ResetConvoDisplay;
+        
+        var worldState = GetNode("/root/WorldState");
+        var setStateCallable = (String key, String value) => EventBus.Instance.EmitSignal(EventBus.SignalName.WorldStateChanged, key, value);
+        var getStringCallable = (String key) => (String)worldState.Call("get_state_value", key);
+        var getIntCallable = (String key) => (int)worldState.Call("get_state_int", key);
+        story.BindExternalFunction("set_state", Callable.From(setStateCallable));
+        story.BindExternalFunction("get_string", Callable.From(getStringCallable));
+        story.BindExternalFunction("get_int", Callable.From(getIntCallable));
     }
     
     public void GotoStoryEntrypoint(String entrypoint, String currentSaveState) {

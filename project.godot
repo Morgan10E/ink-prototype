@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 EventBus="*uid://byvewy3j46ry8"
 Constants="*uid://ctxh0vb1gbdrt"
+WorldState="*uid://bfmo2h8kp3c3b"
 
 [dotnet]
 

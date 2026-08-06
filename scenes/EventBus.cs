@@ -13,6 +13,8 @@ public partial class EventBus : Node
     public delegate void TogglePauseEventHandler();
     [Signal]
     public delegate void TimerEnabledChangedEventHandler();
+    [Signal]
+    public delegate void WorldStateChangedEventHandler(string keyname, string value);
 
     public override void _Ready() {
         Instance = this;

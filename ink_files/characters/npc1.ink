@@ -1,3 +1,5 @@
+VAR route = "undecided"
+
 === npc1 ===
 Oh, hello! # name:npc1
 Didn't expect to see you around. # name:npc1
@@ -24,6 +26,7 @@ What's your platform? # name:npc1
 -> ruler
 
 === healthcare ===
+~ route = "ambitious"
 Oh, yeah, that sounds tough. # name:npc1
 Don't know much about that though. # name:npc1
 Sounds expensive? # name:npc1
@@ -35,6 +38,7 @@ It just seems so complicated. # name:npc1
 -> END
 
 === they_pick ===
+~ route = "unknown"
 Me? # name:npc1
 Huh. # name:npc1
 I guess... getting the potholes fixed on Main Street would be nice. # name:npc1
@@ -42,6 +46,7 @@ I'm pretty sure one of them has an echo at this point! # name:npc1
 -> END
 
 === ruler ===
+~ route = "monarch"
 Ha, that's pretty funny... # name:npc1
 ... oh, you're serious? # name:npc1
 I don't know about that. # name:npc1
